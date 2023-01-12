@@ -1,6 +1,6 @@
 package life.league.challenge.kotlin.home
 
-import life.league.challenge.kotlin.core.exceptions.NoPostsFoundException
+import life.league.challenge.kotlin.core.data.remote.exceptions.NoPostsFoundException
 import life.league.challenge.kotlin.features.home.data.model.PostNetwork
 import life.league.challenge.kotlin.features.home.data.model.UserNetwork
 import life.league.challenge.kotlin.features.home.domain.model.PostModel

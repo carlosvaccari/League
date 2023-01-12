@@ -3,7 +3,7 @@ package life.league.challenge.kotlin.home.domain
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import life.league.challenge.kotlin.core.exceptions.NoPostsFoundException
+import life.league.challenge.kotlin.core.data.remote.exceptions.NoPostsFoundException
 import life.league.challenge.kotlin.core.networkwrapper.DataResult
 import life.league.challenge.kotlin.core.networkwrapper.asException
 import life.league.challenge.kotlin.core.networkwrapper.asSuccess
@@ -16,7 +16,6 @@ import life.league.challenge.kotlin.home.usersNetwork
 import life.league.challenge.kotlin.utils.MainTestRule
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import org.junit.Rule
 import org.junit.Test
 
 class GetPostsUseCaseTest {
