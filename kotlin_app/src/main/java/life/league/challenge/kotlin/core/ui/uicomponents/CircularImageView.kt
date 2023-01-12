@@ -17,17 +17,15 @@ import life.league.challenge.kotlin.core.ui.resources.LeagueColors
 
 @Composable
 fun CircularImageView(modifier: Modifier = Modifier, imageUrl: String, contentDescription: String) {
-    Surface {
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(imageUrl)
-                .crossfade(true)
-                .build(),
-            contentDescription = contentDescription,
-            contentScale = ContentScale.Crop,
-            modifier = modifier
-                .clip(CircleShape)
-                .border(0.5.dp, LeagueColors.Gray, CircleShape)
-        )
-    }
+    AsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(imageUrl)
+            .crossfade(true)
+            .build(),
+        contentDescription = contentDescription,
+        contentScale = ContentScale.Crop,
+        modifier = modifier
+            .clip(CircleShape)
+            .border(0.5.dp, LeagueColors.Gray, CircleShape)
+    )
 }

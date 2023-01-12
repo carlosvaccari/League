@@ -13,41 +13,39 @@ import life.league.challenge.kotlin.R
 
 @Composable
 fun ErrorScreen(errorAction: () -> Unit) {
-    Surface {
-        Column(
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Spacer(modifier = Modifier.weight(0.5F))
+        Text(
+            text = stringResource(id = R.string.error_title),
+            style = MaterialTheme.typography.titleLarge
+        )
+        Text(
+            text = stringResource(
+                id = R.string.error_description,
+            ),
+            modifier = Modifier.padding(top = 24.dp),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.titleMedium
+        )
+        Spacer(modifier = Modifier.weight(1F))
+        Button(
+            onClick = { errorAction() },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .padding(horizontal = 24.dp)
+                .padding(bottom = 16.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.tertiary,
+                contentColor = MaterialTheme.colorScheme.onTertiary,
+            )
         ) {
-            Spacer(modifier = Modifier.weight(0.5F))
-            Text(
-                text = stringResource(id = R.string.error_title),
-                style = MaterialTheme.typography.titleLarge
-            )
-            Text(
-                text = stringResource(
-                    id = R.string.error_description,
-                ),
-                modifier = Modifier.padding(top = 24.dp),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Spacer(modifier = Modifier.weight(1F))
-            Button(
-                onClick = { errorAction() },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
-                    .padding(bottom = 16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.tertiary,
-                    contentColor = MaterialTheme.colorScheme.onTertiary,
-                )
-            ) {
-                Text(text = stringResource(id = R.string.error_action))
-            }
+            Text(text = stringResource(id = R.string.error_action))
         }
     }
 }
