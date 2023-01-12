@@ -17,7 +17,6 @@ class HomeRepositoryImpl @Inject constructor(
 ): HomeRepository {
 
     override suspend fun getPosts(): DataResult<List<PostNetwork>> {
-        println(">>> $remoteDataSource")
         return remoteDataSource.getPosts().asDataResult()
     }
 

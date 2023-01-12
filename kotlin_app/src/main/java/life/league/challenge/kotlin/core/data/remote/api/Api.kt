@@ -13,11 +13,16 @@ import retrofit2.http.Header
  */
 interface Api {
 
+    /**
+     *  All this requests need a header to work. Instead of adding @Header for each call,
+     *  a better approach would be to create a HeaderInterceptor and handle this only in one place
+     */
+
     @GET("login")
     suspend fun login(@Header("Authorization") credentials: String?): NetworkResult<AccountNetwork>
 
     @GET("posts")
-    suspend fun posts(@Header("x-access-token") accessToken: String): NetworkResult<List<PostNetwork>> // todo adicionar header em header interceptor
+    suspend fun posts(@Header("x-access-token") accessToken: String): NetworkResult<List<PostNetwork>>
 
     @GET("users")
     suspend fun users(@Header("x-access-token") accessToken: String): NetworkResult<List<UserNetwork>>

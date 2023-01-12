@@ -23,7 +23,6 @@ class GetPostsUseCaseTest {
 
     private val repository = mockk<HomeRepository>()
 
-    @get:Rule //TODO check this
     val rule = MainTestRule()
 
     private val subject: GetPostsUseCase = GetPostsUseCaseImpl(

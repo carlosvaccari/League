@@ -1,6 +1,5 @@
 package life.league.challenge.kotlin.features.home.domain
 
-import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import life.league.challenge.kotlin.core.data.remote.coroutine.CoroutineDispatchProvider
 import life.league.challenge.kotlin.core.exceptions.NoPostsFoundException
@@ -22,15 +21,12 @@ class GetPostsUseCaseImpl @Inject constructor(
 
     override suspend fun invoke(): DataResult<List<PostModel>> {
         return withContext(dispatchProvider.io) {
-            val postsResult = async { homeRepository.getPosts() } //todo testar esse async
-            val usersResult = async { homeRepository.getUsers() }
+            val postsResult = homeRepository.getPosts()
+            val usersResult = homeRepository.getUsers()
 
-            val posts = postsResult.await()
-            val users = usersResult.await()
-
-            if (posts.isSuccess() && users.isSuccess()) {
-                val associatedToIdUsers = users.asSuccess().data.associateBy { it.id }
-                DataResult.Success(posts.asSuccess().data.map { post ->
+            if (postsResult.isSuccess() && usersResult.isSuccess()) {
+                val associatedToIdUsers = usersResult.asSuccess().data.associateBy { it.id }
+                DataResult.Success(postsResult.asSuccess().data.map { post ->
                     val currentUser = associatedToIdUsers[post.userId]
                     PostModel(
                         userId = post.userId,
@@ -41,7 +37,6 @@ class GetPostsUseCaseImpl @Inject constructor(
                     )
                 })
             } else {
-                println(">>> exception")
                 DataResult.Exception(NoPostsFoundException())
             }
         }
