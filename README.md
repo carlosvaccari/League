@@ -1,5 +1,9 @@
 # League android-code-challenge
 
+Repo: https://github.com/carlosvaccari/League
+
+If you need access, please send me your email so I can provide it to you.
+
 # About
 
 This is a test for League company.
