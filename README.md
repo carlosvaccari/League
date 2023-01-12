@@ -1,28 +1,25 @@
-# android-code-challenge
-
-This repo is for the Android coding interview for new developers :)
-
-Candidates:
-Please put build instructions, assumptions and any other notes that you'd like your reviewers to
-know about in this file
+# League android-code-challenge
 
 # About
 
 This is a test for League company.
 
-This projects uses MVVM as arch, Hilt as DI, Coroutines and Compose.
+This project uses MVVM as arch, Hilt as DI, Coroutines and Compose.
 
-It was implemented light and dark mode and simple error screen in case any exception while trying to
-fetch data happens.
+It was implemented light and dark mode and a simple error screen in case of any exception happens while trying to
+fetch data from network.
 
-There are Unit Tests and Instrumented tests. The instructions of how to run them can be found on How
-To Run section.
+There are Unit Tests and Instrumented tests. The instructions of how to run them can be found on `How
+To Run` section.
 
 # Important
 
-The NetworkResult code isn't mine. It's something that I'm used to use because it helps handling
-error while fetch data from network. More info can be found here
+1 - The NetworkResult code isn't mine. It's something that I'm used to use because it helps handling
+error while fetching data from network. More info can be found here
 -> https://proandroiddev.com/modeling-retrofit-responses-with-sealed-classes-and-coroutines-9d6302077dfe
+
+2 - My understanding is that implementing a login screen + storing user token isn't the main goal of this test, 
+so I've added a workaround to handle this in the class `RemoteDataSource`
 
 # How To run
 
