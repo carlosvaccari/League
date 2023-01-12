@@ -1,3 +1,14 @@
 <resources>
   <string name="app_name">Mobile Coding Challenge</string>
+
+  <!-- region error -->
+  <string name="error_title">Error</string>
+  <string name="error_description">We couldn\'t fetch your data. Please try again later.</string>
+  <string name="error_action">Try again</string>
+  <!-- endregion error -->
+
+  <!-- region Home -->
+  <string name="home_screen_title">Posts</string>
+  <!-- endregion Home -->
+
 </resources>
