@@ -4,6 +4,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import life.league.challenge.kotlin.core.data.remote.RemoteDataSource
+import life.league.challenge.kotlin.core.data.remote.RemoteDataSourceImpl
 import life.league.challenge.kotlin.features.home.data.HomeRepository
 import life.league.challenge.kotlin.features.home.data.HomeRepositoryImpl
 import life.league.challenge.kotlin.features.home.domain.GetPostsUseCase

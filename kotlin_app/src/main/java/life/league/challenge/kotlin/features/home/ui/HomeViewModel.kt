@@ -20,6 +20,7 @@ class HomeViewModel @Inject constructor(
     val uiState: StateFlow<HomeUiState> = _uiState
 
     init {
+        println(">>> init")
         fetchData()
     }
 

@@ -41,6 +41,7 @@ class GetPostsUseCaseImpl @Inject constructor(
                     )
                 })
             } else {
+                println(">>> exception")
                 DataResult.Exception(NoPostsFoundException())
             }
         }
