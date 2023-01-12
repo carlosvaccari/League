@@ -1,12 +1,10 @@
 package life.league.challenge.kotlin.features.home.ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,14 +22,13 @@ import life.league.challenge.kotlin.core.ui.uicomponents.ErrorScreen
 import life.league.challenge.kotlin.core.ui.uicomponents.LoadingScreen
 import life.league.challenge.kotlin.features.home.domain.model.PostModel
 
-
 @Composable
 fun HomeScreen(viewModel: HomeViewModel) {
     val state = viewModel.uiState.collectAsState().value
     val posts = state.postsList
 
     Surface(
-        color = Color.White,
+        color = MaterialTheme.colorScheme.primary,
     ) {
         when {
             state.showLoading -> LoadingScreen()
@@ -47,7 +44,7 @@ fun HomePosts(posts: List<PostModel>) {
         items(posts) { post ->
             PostItem(post)
             Divider(
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.secondary,
                 thickness = 1.dp,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
@@ -57,21 +54,25 @@ fun HomePosts(posts: List<PostModel>) {
 
 @Composable
 fun PostItem(post: PostModel) {
-    Surface {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                CircularImageView(
-                    modifier = Modifier
-                        .padding(end = 8.dp)
-                        .size(24.dp),
-                    post.imageUrl,
-                    stringResource(id = R.string.user_icon_description)
-                )
-                Text(text = post.userName)
-            }
-            Text(text = post.title, modifier = Modifier.padding(vertical = 8.dp))
-            Text(text = post.description)
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(16.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            CircularImageView(
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .size(42.dp),
+                post.imageUrl,
+                stringResource(id = R.string.user_icon_description)
+            )
+            Text(text = post.userName, style = MaterialTheme.typography.titleMedium)
         }
+        Text(
+            text = post.title,
+            modifier = Modifier.padding(vertical = 8.dp),
+            style = MaterialTheme.typography.titleMedium
+        )
+        Text(text = post.description, style = MaterialTheme.typography.titleSmall)
     }
 }
 

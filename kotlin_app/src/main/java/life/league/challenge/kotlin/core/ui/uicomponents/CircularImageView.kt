@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import life.league.challenge.kotlin.core.ui.resources.LeagueColors
 
 @Composable
 fun CircularImageView(modifier: Modifier = Modifier, imageUrl: String, contentDescription: String) {
@@ -26,7 +27,7 @@ fun CircularImageView(modifier: Modifier = Modifier, imageUrl: String, contentDe
             contentScale = ContentScale.Crop,
             modifier = modifier
                 .clip(CircleShape)
-                .border(0.5.dp, Color.Gray, CircleShape)
+                .border(0.5.dp, LeagueColors.Gray, CircleShape)
         )
     }
 }

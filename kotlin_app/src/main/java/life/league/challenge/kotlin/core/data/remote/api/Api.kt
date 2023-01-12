@@ -3,8 +3,7 @@ package life.league.challenge.kotlin.core.data.remote.api
 import life.league.challenge.kotlin.core.networkwrapper.NetworkResult
 import life.league.challenge.kotlin.features.home.data.model.PostNetwork
 import life.league.challenge.kotlin.features.home.data.model.UserNetwork
-import life.league.challenge.kotlin.model.Account
-import retrofit2.Call
+import life.league.challenge.kotlin.core.data.remote.model.AccountNetwork
 import retrofit2.http.GET
 import retrofit2.http.Header
 
@@ -15,7 +14,7 @@ import retrofit2.http.Header
 interface Api {
 
     @GET("login")
-    suspend fun login(@Header("Authorization") credentials: String?): NetworkResult<Account>
+    suspend fun login(@Header("Authorization") credentials: String?): NetworkResult<AccountNetwork>
 
     @GET("posts")
     suspend fun posts(@Header("x-access-token") accessToken: String): NetworkResult<List<PostNetwork>> // todo adicionar header em header interceptor
