@@ -14,7 +14,7 @@ interface RemoteDataSource {
 }
 
 class RemoteDataSourceImpl @Inject constructor(
-    val api: Api
+    private val api: Api
 ): RemoteDataSource {
 
     private var apiKey: String? = null
@@ -27,11 +27,19 @@ class RemoteDataSourceImpl @Inject constructor(
         return api.users(getApiKey())
     }
 
+    /**
+     *  My understanding is that this is not the main goal of this test, so I've added this
+     *  workaround instead of storing the token.
+     */
     private suspend fun getApiKey() : String {
-        // Todo store token somewhere
         if (apiKey == null) {
-            apiKey = api.login("hello", "world").asSuccess()?.data?.apiKey
+            apiKey = api.login(USERNAME, PASSWORD).asSuccess()?.data?.apiKey
         }
         return apiKey.orEmpty()
+    }
+
+    private companion object {
+        const val USERNAME = "hello"
+        const val PASSWORD = "world"
     }
 }
