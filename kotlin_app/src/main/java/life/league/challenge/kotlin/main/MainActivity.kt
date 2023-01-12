@@ -1,38 +1,48 @@
 package life.league.challenge.kotlin.main
 
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import life.league.challenge.kotlin.R
-import life.league.challenge.kotlin.api.Service
-import life.league.challenge.kotlin.api.login
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import dagger.hilt.android.AndroidEntryPoint
+import life.league.challenge.kotlin.core.directions.LeagueDirections
+import life.league.challenge.kotlin.core.ui.theme.LeagueTheme
+import life.league.challenge.kotlin.core.ui.uicomponents.TopBar
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        private const val TAG = "MainActivity"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContent {
+            LeagueApp()
+        }
     }
+}
 
-    override fun onResume() {
-        super.onResume()
-
-        // example api call to login, feel free to delete this and implement the call to login
-        // somewhere else differently depending on your chosen architecture
-        lifecycleScope.launch(Dispatchers.IO) {
-            try {
-                val account = Service.api.login("hello", "world")
-                Log.v(TAG, account.apiKey ?: "")
-            } catch (t : Throwable) {
-                Log.e(TAG, t.message, t)
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LeagueApp() {
+    LeagueTheme {
+        val currentScreen: LeagueDirections by remember { mutableStateOf(LeagueDirections.Home) }
+        Scaffold(
+            topBar = {
+                TopBar(
+                    currentScreen = currentScreen
+                )
+            }
+        ) { innerPadding ->
+            Box(Modifier.padding(innerPadding)) {
+                currentScreen.screen()
             }
         }
     }
-
 }

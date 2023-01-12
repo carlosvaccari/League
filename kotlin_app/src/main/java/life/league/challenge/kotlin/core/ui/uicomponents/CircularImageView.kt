@@ -1,4 +1,4 @@
-package life.league.challenge.kotlin.core.uicomponents
+package life.league.challenge.kotlin.core.ui.uicomponents
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.shape.CircleShape
